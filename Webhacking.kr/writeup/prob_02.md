@@ -21,3 +21,7 @@ web 코드를 이해하고 쿠키를 조작하여 Blind SQL Injection을 할 수
 form 태그안의 input을 보면 입력되는 값은 Password임을 추측할 수 있다.
 
 이를 and 연산을 통해 Blind SQL Injection으로 답을 구하여 볼 수 있다.
+
+그 전의 FreeB0aRd 테이블의 password 길이값과 admin 테이블의 password 길이값을 구해보기 위하여 쿠키에 
+1515414399 and (select length(password) from FreeB0aRd) = * 와 1515414399 and (select length(password) from admin) = *
+을 해보았는데 * 자리에 여러 숫자들을 대입하여 해본결과 FreeB0aRd 테이블의 password의 길이 값은 9, admin 테이블의 password 길이 값은 10 임을 알 수 있었다.

