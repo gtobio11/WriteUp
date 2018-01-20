@@ -25,3 +25,9 @@ form 태그안의 input을 보면 입력되는 값은 Password임을 추측할 �
 그 전의 FreeB0aRd 테이블의 password 길이값과 admin 테이블의 password 길이값을 구해보기 위하여 쿠키에 
 1515414399 and (select length(password) from FreeB0aRd) = * 와 1515414399 and (select length(password) from admin) = *
 을 해보았는데 * 자리에 여러 숫자들을 대입하여 해본결과 FreeB0aRd 테이블의 password의 길이 값은 9, admin 테이블의 password 길이 값은 10 임을 알 수 있었다.
+
+## 문제 해결 방안
+사실 각 테이블의 password 길이 또한 일일히 구하기 어려운 것이므로 해당 문제의 password를 구하는 것은 파이썬 코드로 작성하였다.
+해당 코드는 `../src/prob_02.py`이다. 출력되는 freeboard password를 freeboard의 게시물에 입력하여 다운받은 알집파일을 열기 위해서는 비밀번호가 필요한데 코드에서 출력되는 admin password를 main페이지에서 용을 누르면 이동되는 admin페이지에 입력하면 압축파일의 비밀번호를 출력하여 준다 해당하는 비밀번호를 압축 해제하는데 사용하면 html파일이 있고 그 html 파일을 열면 flag를 준다.
+
+해당 flag를 auth에 입력하면 문제풀이에 해결된다.
